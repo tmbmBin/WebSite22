@@ -1,0 +1,39 @@
+﻿body {
+}
+
+.objVisible{display:none}
+
+/* 可摺疊標題 */
+.sFoldTitle { background-color: #6699FF; CURSOR: hand; }
+.sFoldTitleFont { font-size:10pt; color:#FFFFFF; padding-top:4px; padding-left:4px; }
+/* DataGrid寬高 */
+.DIV0_width { width: 590px; height: auto; overflow: hidden; border-style: groove; border-width: 1px; }
+.DIV1_width { width: 590px; height: 166px; overflow: auto; border-style: groove; border-width: 1px; }
+.DIV1_noWidth { width: auto; height: auto; overflow-x: scroll; border-style: groove; border-width: 1px; }
+.DIV2_width { width: 590px; height: 95px; overflow: auto; border-style: groove; border-width: 1px; }
+.DIV2_noWidth { width: auto; height: auto; overflow-x: scroll; border-style: groove; border-width: 1px; }
+.DIV3_width { width: 590px; height: 87px; overflow: auto; border-style: groove; border-width: 1px; }
+.DIV3_noWidth { width: auto; height: auto; overflow-x: scroll; border-style: groove; border-width: 1px; }
+
+.DIV1_FreezingCol{
+	LEFT: expression(document.getElementById("div_grid_acpDtlExtra").scrollLeft+1);
+	/*freezingDiv is the name of the div to make your datagrid scrollable */
+	POSITION: relative;
+	z-index: 9;
+
+	border-top: 0px solid #FFFFFF;
+	border-bottom: 0px solid;
+	border-left: 0px solid #003366;
+	border-right: 0px solid #FFFFFF;
+}
+.DIV1_FreezingCol2{
+	LEFT: expression(document.getElementById("div_grid_acpDtlExtra").scrollLeft+1);
+	/*freezingDiv is the name of the div to make your datagrid scrollable */
+	POSITION: relative;
+	z-index: 9;
+
+	border-top: 0px solid #FFFFFF;
+	border-bottom: 0px solid;
+	border-left: 0px solid #003366;
+	border-right: 1px solid #FFFFFF;
+}

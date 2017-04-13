@@ -1,0 +1,468 @@
+﻿<PUBLIC:COMPONENT>
+<PUBLIC:ATTACH EVENT="oncontentready" FOR="element" HANDLER="CalendarInitial" />
+<PUBLIC:ATTACH EVENT="onmousedown" FOR="document" HANDLER="DocumentOnmousedown" />
+<PUBLIC:ATTACH EVENT="onmouseup" FOR="document" HANDLER="DocumentOnmouseup" />
+<PUBLIC:ATTACH EVENT="onmousemove" FOR="document" HANDLER="DocumentOnmousemove" />
+<PUBLIC:ATTACH EVENT="onmouseover" FOR="element" HANDLER="CalendarOnmouseover" />
+<PUBLIC:ATTACH EVENT="onmouseout" FOR="element" HANDLER="CalendarOnmouseout" />
+<PUBLIC:METHOD NAME="Open"/>
+<PUBLIC:METHOD NAME="Changed"/>
+<PUBLIC:METHOD NAME="Clicked"/>
+<PUBLIC:METHOD NAME="CheckKeyStroke"/>
+
+<script language="javascript">
+//***********************************************************************
+//**********全域變數 begin
+var isCalendarDragging = false; //用來判別物件是否處於拖曳狀態
+var selCalendar_x, selCalendar_y; //記錄萬年曆開始移動前的座標位置
+var ox, oy; //在萬年曆上按下滑鼠左鍵時的游標位置
+var srcElem; //回應物件的參照
+var oldBGC;  //記錄舊的 TD 背景色
+var oldCursor;
+
+//**********全域變數 end
+//***********************************************************************
+
+//***********************************************************************
+//**********物件方法 begin
+//開啟萬年曆
+function Open(srcElementID){
+  srcElem = window.document.all(srcElementID);
+  if (srcElem==null){
+    alert('無法開啟萬年曆\n\n指定的回應物件 ' + srcElementID + ' 不存在！');
+    return;
+  }
+
+  if (srcElem.value==null){
+    alert('無法開啟萬年曆\n\n指定的回應物件 ' + srcElementID + ' 無法接收傳回值！');
+    return;
+  }
+
+  element.style.display = '';
+
+  var hh = window.document.body.offsetHeight - element.offsetHeight;
+//  alert(hh);
+	if (window.event.clientY > hh){
+//	    element.style.top = window.event.clientY - element.offsetHeight + window.document.body.scrollTop;
+	    element.style.top = window.event.clientY - window.document.body.scrollTop;
+	   
+//	    alert(element.style.top);
+//	    if (element.style.top < 0) {
+//	        alert(element.style.top);
+//	        element.style.top = 0; 
+//            }
+//	    alert(window.event.clientY);
+//	    alert(element.offsetHeight);
+//	    alert(window.document.body.scrollTop);
+	}else{
+	    element.style.top = window.event.clientY + window.document.body.scrollTop;
+//    alert("ff");
+	}
+//	alert(element.style.top);
+  var ww = window.document.body.offsetWidth - element.offsetWidth;
+	if (window.event.clientX > ww){
+    element.style.left = window.event.clientX - element.offsetWidth + window.document.body.scrollLeft;
+	}else{
+	  element.style.left = window.event.clientX + window.document.body.scrollLeft;
+	}
+}
+
+//萬年曆的年月選單改變時
+function Changed(toToday){
+  var dtYear, dtMonth, dtBegin
+  if (toToday == true){
+    dtYear = (new Date()).getFullYear();
+    dtMonth = (new Date()).getMonth();
+  }
+  else{
+    dtYear = element.all(element.id + '_Year').value;
+    dtMonth = element.all(element.id + '_Month').value;
+  }
+  dtBegin = new Date();
+  dtBegin.setDate(1);
+  dtBegin.setMonth(dtMonth);
+  dtBegin.setYear(dtYear);
+  element.all(element.id + '_Year').selectedIndex = dtYear - 1912;
+  element.all(element.id + '_Month').selectedIndex = dtMonth;
+  GenerateCalendarDate(element, dtBegin);
+}
+
+//在萬年曆表格上按下滑鼠左鍵
+function Clicked(){
+  var eSrc = window.event.srcElement;
+  if (eSrc.id == 'CalendarDate') srcElem.value = eSrc.title;
+  if (eSrc.id == element.id + '_DaysBefore' || eSrc.id == element.id + '_DaysAfter'){
+    var Days2Count = element.all(element.id + '_Days').value;
+    var i = 0;
+    var strCell;
+    do{
+      i = Days2Count.indexOf("0",0)
+      if (i!=(-1)) Days2Count = Days2Count.substring(i+1, Days2Count.length);
+    }while(i!=(-1))
+  }
+  if (Days2Count=='') Days2Count = '0';
+  if (eSrc.id == element.id + '_DaysBefore') srcElem.value = DayCount((new Date()), (0 - eval(Days2Count)));
+  if (eSrc.id == element.id + '_DaysAfter') srcElem.value = DayCount((new Date()), eval(Days2Count));
+  element.style.display = 'none';
+}
+
+//檢查輸入按鈕是否為 0 - 9
+function CheckKeyStroke(keyStroke){
+  var blnRtn = false;
+  if (keyStroke == 8) blnRtn = true; //press ESC
+  if (keyStroke == 13) blnRtn = true; //press ENTER
+  if (keyStroke == 45) blnRtn = true; //press INSERT
+  if (keyStroke == 46) blnRtn = true; //press DELETE
+  //if key stroke not in 0 - 9 then cancel the keystroke
+  if (keyStroke >= 48 && keyStroke <= 57) blnRtn = true; else blnRtn = false;
+  return blnRtn;
+}
+//**********物件方法 end
+//***********************************************************************
+
+//***********************************************************************
+//**********內部函數 begin
+
+
+//以輸入的日期與天數計算日期位移，並將日期格式化
+function DayCount(Date2Count, DaysAfter){
+  Date2Count.setDate(Date2Count.getDate() + eval(DaysAfter));
+  return DateFormat(Date2Count);
+}
+
+//以傳入的日期計算出當週的禮拜天的日期
+function GetFirstWeekday(dtDate){
+  var i = dtDate.getDay();
+  dtDate.setDate(dtDate.getDate() - i);
+  return dtDate;
+}
+
+//日期格式化
+function DateFormat(dtDate){
+  var strRtn;
+  strRtn = dtDate.getFullYear();
+  if (element.rocdate){
+    strRtn = strRtn - 1911;
+    if (strRtn < 100){
+      strRtn = '0' + strRtn;
+    }
+  }
+  strRtn = strRtn + element.separator;
+  if (dtDate.getMonth() < 9){
+    strRtn = strRtn + '0' + (dtDate.getMonth() + 1) + element.separator;
+  }
+  else{
+    strRtn = strRtn + (dtDate.getMonth() + 1) + element.separator;
+  }
+  if (dtDate.getDate() < 10){
+    strRtn = strRtn + '0' + dtDate.getDate();
+  }
+  else{
+    strRtn = strRtn + dtDate.getDate();
+  }
+  return strRtn;
+}
+
+//產生萬年曆
+function GenerateCalendar(oCalendar){
+  GenerateCalendarHeader(oCalendar);
+  GenerateCalendarSelection(oCalendar);
+  GenerateCalendarBody(oCalendar);
+  GenerateCalendarFooter(oCalendar);
+  Changed(true);
+}
+
+//產生萬年曆的標題列
+function GenerateCalendarHeader(oCalendar){
+  var strHTML;
+  strHTML = '<div align="right" id="' + oCalendar.id + '_Title" ';
+  strHTML = strHTML + 'OnSelectStart="javascript:return false;">';
+  strHTML = strHTML + '<table border="0" cellpadding="0" cellspacing="0" width="100%" ';
+  strHTML = strHTML + 'style="color:white;background-color:Midnightblue;font-family:arial black;font-size:10pt;">';
+  strHTML = strHTML + '<tr>';
+  strHTML = strHTML + '<td align="left">';
+  strHTML = strHTML + '<span onclick="javascript:' + element.id +'.Changed(true);" ';
+  strHTML = strHTML + 'style="font-family:arial black;color:white" ';
+  strHTML = strHTML + 'onmouseover="javascript:this.style.color=\'red\'" ';
+  strHTML = strHTML + 'onmouseout="javascript:this.style.color=\'white\'" ';
+  strHTML = strHTML + 'title="今天是 ' + DateFormat((new Date)) + '">' + DateFormat((new Date)) + '</span>';
+  strHTML = strHTML + '</td>';
+  strHTML = strHTML + '<td align="right">';
+  strHTML = strHTML + '<span onclick="javascript:' + element.id +'.style.display=\'none\';" ';
+  strHTML = strHTML + 'style="font-family:arial black;color:white" ';
+  strHTML = strHTML + 'onmouseover="javascript:this.style.color=\'red\'" ';
+  strHTML = strHTML + 'onmouseout="javascript:this.style.color=\'white\'" ';
+  strHTML = strHTML + 'title="關閉萬年曆">&nbsp;X</span>';
+  strHTML = strHTML + '</td></tr></table>';
+  strHTML = strHTML + '</div>';
+  oCalendar.insertAdjacentHTML("BeforeEnd", strHTML);
+}
+
+//產生萬年曆的表尾
+function GenerateCalendarFooter(oCalendar){
+  if (element.counter){
+    var strHTML = '';
+    strHTML = '<div id="' + oCalendar.id + '_Footer" align="center" OnSelectStart="javascript:return false;">';
+    strHTML = strHTML + '<table border="0" cellpadding="2" cellspacing="0" width="100%" ';
+    strHTML = strHTML + 'style="color:white;font-family:arial black;font-size:10pt;">';
+    strHTML = strHTML + '<tr>';
+    strHTML = strHTML + '<td align="left">';
+    strHTML = strHTML + '<span id="' + oCalendar.id + '_DaysBefore" ';
+    strHTML = strHTML + 'style="font-family:arial black;color:white;font-weight:bold;" ';
+    strHTML = strHTML + 'onmouseover="javascript:this.style.color=\'red\'" ';
+    strHTML = strHTML + 'onmouseout="javascript:this.style.color=\'white\'" ';
+    strHTML = strHTML + 'onclick="javascript:document.all.' + oCalendar.id + '.Clicked();" ';
+    strHTML = strHTML + 'title="' + DateFormat((new Date)) + '之前">&lt;&lt;</span>';
+    strHTML = strHTML + '</td>';
+    strHTML = strHTML + '<td align="center">';
+    strHTML = strHTML + '<input type="text" value="" size="7" id="' + oCalendar.id + '_Days" ';
+    strHTML = strHTML + 'style="text-align:center;" maxlength="5" ';
+    strHTML = strHTML + 'onfocus="javascript:this.value=\'\';" onkeypress="javascript:event.returnValue=' + element.id + '.CheckKeyStroke(window.event.keyCode);">';
+    strHTML = strHTML + '</td>';
+    strHTML = strHTML + '<td align="right">';
+    strHTML = strHTML + '<span id="' + oCalendar.id + '_DaysAfter" ';
+    strHTML = strHTML + 'style="font-family:arial black;color:white;font-weight:bold;" ';
+    strHTML = strHTML + 'onmouseover="javascript:this.style.color=\'red\'" ';
+    strHTML = strHTML + 'onmouseout="javascript:this.style.color=\'white\'" ';
+    strHTML = strHTML + 'onclick="javascript:document.all.' + oCalendar.id + '.Clicked();" ';
+    strHTML = strHTML + 'title="' + DateFormat((new Date)) + '之後">&gt;&gt;</span>';
+    strHTML = strHTML + '</td>';
+    strHTML = strHTML + '</tr>';
+    strHTML = strHTML + '</table>';
+    strHTML = strHTML + '</div>';
+
+    oCalendar.insertAdjacentHTML("BeforeEnd", strHTML);
+  }
+}
+
+//產生萬年曆中的年月選單
+function GenerateCalendarSelection(oCalendar){
+  var strHTML, today, i;
+  var oSelect, oOption;
+
+  today = new Date();
+  strHTML = '<div id="' + oCalendar.id + '_Selection" align="center" OnSelectStart="javascript:return false;">';
+  strHTML = strHTML + '<table border="0" cellpadding="4" cellspacing="0" width="100%">';
+  strHTML = strHTML + '<tr>';
+  strHTML = strHTML + '<td align="center">';
+  strHTML = strHTML + '<select id="' + oCalendar.id + '_Year" '
+  strHTML = strHTML + 'onchange="javascript:document.all.' + oCalendar.id + '.Changed(false);" '
+  strHTML = strHTML + 'size="1" style="font-family:arial;font-size:9pt;background-color:azure;"></select>&nbsp;&nbsp;';
+  strHTML = strHTML + '</td>';
+  strHTML = strHTML + '<td align="center">';
+  strHTML = strHTML + '<select id="' + oCalendar.id + '_Month" '
+  strHTML = strHTML + 'onchange="javascript:document.all.' + oCalendar.id + '.Changed(false);" '
+  strHTML = strHTML + 'size="1" style="font-family:arial;font-size:9pt;background-color:azure;"></select>';
+  strHTML = strHTML + '</td>';
+  strHTML = strHTML + '</tr>';
+  strHTML = strHTML + '</table>';
+  strHTML = strHTML + '</div>';
+  oCalendar.insertAdjacentHTML("BeforeEnd", strHTML);
+
+  oSelect = oCalendar.all(oCalendar.id + '_Year');
+  oSelect.style.cursor = 'hand';
+  for (i=1912;i<=2100;i++){
+    oOption = window.document.createElement('option');
+    oOption.value = i + '';
+    if (!element.rocdate){
+      oOption.text = '西元 ' + i + ' 年';
+    }
+    else{
+      oOption.text = '民國 ' + (i - 1911) + ' 年';
+    }
+    oSelect.options.add(oOption);
+    if (oOption.value == today.getFullYear()+'') oOption.selected = true;
+  }
+
+  //oCalendar.insertAdjacentHTML("BeforeEnd", strHTML);
+  oSelect = oCalendar.all(oCalendar.id + '_Month');
+  oSelect.style.cursor = 'hand';
+  //注意 javascript 的 getMonth 會取出日期變數的月份
+  //但是該月份是 zero base 的，就是一月到十二月是以 0 - 11 表示
+  //所以月份選單的 value 直接配合 javascript
+  for (i=0;i<=11;i++){
+    oOption = window.document.createElement('option');
+    oOption.value = i + '';
+    oOption.text = (i + 1) + ' 月';
+    oSelect.options.add(oOption);
+    if (oOption.value == eval(today.getMonth() + 1)) oOption.selected = true;
+  }
+}
+
+//產生萬年曆中，空白的日期表格
+function GenerateCalendarBody(oCalendar){
+  var strHTML, oTable, oTr, oTd;
+  var today;
+
+  strHTML = '<table id="' + oCalendar.id + '_Body" width="100%" height="100%" ';
+  strHTML = strHTML + 'OnSelectStart="javascript:return false;" ';
+  strHTML = strHTML + 'onclick="javascript:document.all.' + oCalendar.id + '.Clicked();" ';
+  strHTML = strHTML + 'border="0" cellpadding="2" cellspacing="1" ';
+  strHTML = strHTML + 'style="font-family:arial;background-color:dimgray;"></table>';
+  oCalendar.insertAdjacentHTML('BeforeEnd', strHTML);
+  oTable = oCalendar.all(oCalendar.id + '_Body');
+  oTable.style.fontSize = "9pt";
+  oTable.style.textAlign = "center";
+  oTable.style.cursor = "hand";
+
+  var Weekdays = new Array('日','一','二','三','四','五','六');
+  oTr = oTable.insertRow(-1);
+  if (oTr!=null){
+    for (i=0;i<=6;i++){
+      oTd = oTr.insertCell(-1);
+      oTd.style.backgroundColor = 'Darkgray'; //'LightSteelBlue';
+      oTd.innerText = Weekdays[i];
+    }
+  }
+
+  var today = new Date();
+  for (i=1;i<=6;i++){
+    oTr = oTable.insertRow(-1);
+    for (j=1;j<=7;j++){
+      oTd = oTr.insertCell(-1);
+      oTd.id = "CalendarDate";
+      oTd.title = '';
+      oTd.innerText = 0;
+    }
+  }
+}
+
+//針對萬年曆中的日期表格填入日期
+function GenerateCalendarDate(oCalendar, dtBegin){
+  var i, oCalendar, cDates;
+  var today, dtMonth;
+
+  today = new Date();
+  dtMonth = dtBegin.getMonth();
+  dtBegin = GetFirstWeekday(dtBegin);
+  cDates = oCalendar.all('CalendarDate');
+  for (i=0;i<=cDates.length-1;i++){
+    cDates[i].title = DateFormat(dtBegin);
+    cDates[i].innerText = dtBegin.getDate() + '';
+    cDates[i].style.backgroundColor = 'Cornsilk';
+    if (DateFormat(dtBegin) == DateFormat(today)){
+      cDates[i].style.backgroundColor = 'Wheat'; //'Cornflowerblue';
+      cDates[i].style.color = 'Black'; //'Cornflowerblue';
+    }
+    else{
+      if (dtBegin.getMonth() != dtMonth){
+          cDates[i].style.backgroundColor = 'Gainsboro';
+          cDates[i].style.color = 'Darkgray';
+      }
+      else{
+        if (dtBegin.getDay()==0 || dtBegin.getDay()==6){
+          cDates[i].style.backgroundColor = 'Pink';
+          cDates[i].style.color = 'Black';
+        }
+      }
+    }
+    dtBegin.setDate(dtBegin.getDate() + 1);
+  }
+}
+//**********內部函數 end
+//***********************************************************************
+
+//***********************************************************************
+//**********物件事件 begin
+//萬年曆物件初始化
+function CalendarInitial(){
+  var strHTML;
+  if (element.tagName != 'DIV'){
+    alert('無法開啟萬年曆\n\n萬年曆只能用於 DIV 物件！');
+    return;
+  }
+  if (element.id=='' || element.id==null){
+    alert('無法開啟萬年曆\n\n沒有指定萬年曆物件的 id！');
+    return;
+  }
+  //設定物件樣式
+  element.style.display = 'none';
+  element.style.zIndex = 1000;
+  element.style.textAlign = "center";
+  element.style.border = "2 outset Silver";
+  element.style.fontSize = "9pt";
+  element.style.position = "absolute";
+  element.style.top = 0;
+  element.style.left = 0;
+  element.style.backgroundColor = "Darkgray";
+  element.style.cursor = "hand";
+  element.style.width = "200";
+  element.style.height = "";
+  if (element.separator==null || element.separator=='') element.separator = '.';
+  if (element.rocdate==''){
+    element.rocdate = true;
+  }
+  else{
+    element.rocdate = false;
+  }
+  if (element.counter==''){
+    element.counter = true;
+  }
+  else{
+    element.counter = false;
+  }
+  GenerateCalendar(element);
+}
+
+function DocumentOnmousedown(){
+  var eSrc = window.event.srcElement; //先取得發生事件的物件
+
+  var eTitle = element.all(element.id + '_Title');
+  //if (eSrc.id == element.id + '_Title'){ //如果是按住萬年曆的標題列
+  if (eTitle.contains(eSrc) && eSrc.tagName != 'SPAN'){ //如果是按住萬年曆的標題列
+    isCalendarDragging = true; //表示要開始移動萬年曆
+    selCalendar_x = element.style.pixelLeft; //萬年曆移動前的位置
+    selCalendar_y = element.style.pixelTop;
+    ox = window.event.clientX; //發生事件時的座標軸
+    oy = window.event.clientY;
+    element.style.filter = 'Alpha(Opacity=60)'; //移動時，萬年曆變成半透明
+    oldCursor = element.style.cursor;
+    element.style.cursor = 'move'; //移動萬年曆時，游標變形
+  }
+}
+
+function DocumentOnmouseup(){
+  var eSrc = window.event.srcElement; //先取得發生事件的物件
+  var eTitle = element.all(element.id + '_Title');
+  if (eTitle.contains(eSrc) && eSrc.tagName != 'SPAN'){ //如果是按住萬年曆的標題列
+    isCalendarDragging = false; //滑鼠按鈕放開時，表示萬年曆結束移動
+    element.style.filter = 'Alpha(Opacity=100)'; //移動結束，萬年曆回復成一般狀態
+    element.style.cursor = oldCursor; //移動萬年曆時，游標變形
+  }
+}
+
+function DocumentOnmousemove(){
+  //如果正按著滑鼠左鍵，且處於移動萬年曆的狀態，就對萬年曆重新定位
+  if (window.event.button==1 && isCalendarDragging){
+    element.style.pixelLeft = selCalendar_x + window.event.clientX - ox;
+    element.style.pixelTop = selCalendar_y + window.event.clientY - oy;
+    return false;
+  }
+}
+
+function CalendarOnmouseover(){
+  var eSrc = window.event.srcElement;
+  if (eSrc.id == 'CalendarDate'){ //滑鼠移入日期方格
+    //oldBGC = eSrc.style.backgroundColor; //先記錄目前方格的背景色
+    //eSrc.style.backgroundColor = 'Lightblue'; //再換掉目前方格的背景色
+    oldBGC = eSrc.style.color; //先記錄目前方格的前景色
+    eSrc.style.color = 'red'; //再換掉目前方格的背景色
+    eSrc.style.fontWeight = 'bold';
+  }
+}
+
+function CalendarOnmouseout(){
+  var eSrc = window.event.srcElement;
+  if (eSrc.id == 'CalendarDate'){ //滑鼠移出日期方格
+    //eSrc.style.backgroundColor = oldBGC; //以記錄起來的背景色還原
+    eSrc.style.color = oldBGC; //以記錄起來的背景色還原
+    eSrc.style.fontWeight = 'normal';
+  }
+}
+
+//**********物件事件 begin
+//***********************************************************************
+
+</script>
+
+</PUBLIC:COMPONENT>

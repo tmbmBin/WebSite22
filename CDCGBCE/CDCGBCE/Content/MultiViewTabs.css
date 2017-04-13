@@ -1,0 +1,78 @@
+﻿#tabsTitle {
+    /*float:left;*/
+    width: 100%;
+    height: 35px;
+    background: #000;
+    text-align: center;
+    padding: 5px 0 0px;
+    color: white;
+    FONT-SIZE: 14pt;
+    /*background:url("../Images/layout/tableftH.gif") repeat-x right top;*/
+}
+/*#tabsTitle ul {
+              margin:0 auto;
+              padding:0 10px 0 50px;
+              list-style:none;
+          }
+        #tabsTitle li {
+              display:inline;
+              margin:0 auto;
+              padding:0;
+          }
+
+        #tabsTitle a span {
+              float:left;
+              display:block;
+              background:url("../Images/layout/tabright8.gif") no-repeat right top
+              padding:5px 15px 4px 6px;
+              color:White;
+          }
+        #tabsTitle a span {float:none;}*/
+
+.Initial {
+    display: block;
+    padding: 4px 18px 4px 18px;
+    float: left;
+    background: url("../Images/layout/tabrightD.gif") no-repeat right top;
+    color: Black;
+    font-weight: bold;
+}
+
+    .Initial:hover {
+        color: White;
+        background: url("../Images/layout/tabright8.gif") no-repeat right top;
+    }
+
+.Clicked {
+    float: left;
+    display: block;
+    background: url("../Images/layout/tabright8.gif") no-repeat right top;
+    padding: 4px 18px 4px 18px;
+    color: Black;
+    font-weight: bold;
+    color: White;
+}
+
+.InitialSub {
+    display: block;
+    padding: 4px 18px 4px 18px;
+    float: left;
+    background: url("../Images/layout/tabrightC.gif") no-repeat right top;
+    color: Black;
+    font-weight: bold;
+}
+
+    .InitialSub:hover {
+        color: White;
+        background: url("../Images/layout/tabright5.gif") no-repeat right top;
+    }
+
+.SubClicked {
+    float: left;
+    display: block;
+    background: url("../Images/layout/tabright5.gif") no-repeat right top;
+    padding: 4px 18px 4px 18px;
+    color: Black;
+    font-weight: bold;
+    color: White;
+}

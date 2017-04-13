@@ -1,0 +1,59 @@
+﻿.ddn {	cursor: default;
+		color: #666666;
+		border: 1px solid #000000;
+		z-index: 20000 !important; }
+.ddn-ftr {	width: 190px;	/* 下方邊框 */
+			height: 8px;
+			background: transparent url("../AppCtrls/Images/static.png") no-repeat 50% -82px;
+			overflow: hidden; } /* overflow:hidden allows IE6 to render the element's height correctly */
+
+.ddn-con {	padding-right: 2px;	/*捲軸右方空間*/
+			height: auto;
+			background-color: #F6F6F6; }
+.ddn-item {			padding-left: 6px;
+					line-height: 22px;
+					background: none;
+					font-size: 12px; }	/* 清單內的字 */
+.ddn-item-hover {	width: 175px;
+					padding-left: 6px;
+					line-height: 22px;
+					background: transparent url("../AppCtrls/Images/static.png") no-repeat;
+					background-position-x: -1px;
+					color: #FF8C00; }
+
+.cmb {	padding-left: 2px;
+		background-color: #F6F6F6;
+		border: 1px solid #454545;
+		border-right-color: #000000;
+		border-bottom-color: #000000; }
+.cmb-hover { background-color: #FFFFFF; }
+.txt {	background: none;
+		border: none;
+		margin: 0;
+		padding-left: 4px;
+		padding-top: 1px;
+		font-size: 11px;	/* 方塊內的字 */
+		color: #333333; }
+.cmb-hover .txt { color: #000000; }
+
+
+.style { background: #F6F6F6 url("../AppCtrls/Images/vertical.png") repeat-y; }
+	.style .ddn-item {			height: 34px;
+								line-height: 34px; }
+	.style .ddn-item-hover {	height: 34px;
+								line-height: 34px;
+								color:#333333;
+								background: transparent url("../AppCtrls/Images/static.png") no-repeat 0 -44px; }
+	.style .brk {	height: 4px;
+					background: transparent url("../AppCtrls/Images/static.png") no-repeat 0 -78px; }
+
+.font { background:#F6F6F6 url("../AppCtrls/Images/vertical.png") repeat-y; }
+	.font .ddn-item {		height: 22px;
+							line-height: 22px; }
+	.font .ddn-item-hover {	height: 22px;
+							color: #333333;
+							background: transparent url("../AppCtrls/Images/static.png") no-repeat 0 -22px; }
+	.font .icon {	width: 12px;
+					height: 12px;
+					float: left;
+					padding: 5px 16px 0 4px; }	/* 上、右、下、左 */

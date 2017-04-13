@@ -1,0 +1,6 @@
+﻿
+setShowPassData()
+{
+    var strPath;
+
+}

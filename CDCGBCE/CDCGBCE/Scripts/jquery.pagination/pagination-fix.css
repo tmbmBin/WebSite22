@@ -1,0 +1,41 @@
+/*
+
+
+    2013.04.29：Edit：拿掉 float 的排版，這樣才可以置中
+    
+    
+*/
+
+
+.pagination {
+            font-size: 80%;
+        }
+        
+.pagination a {
+    text-decoration: none;
+	border: solid 1px #AAE;
+	color: #15B;
+}
+
+.pagination a, .pagination span {
+    /* 2013.04.29：Edit：拿掉 float 的排版，這樣才可以置中 */
+    /*display: block;
+    float: left;*/
+    padding: 0.3em 0.5em;
+    margin-right: 5px;
+	margin-bottom: 5px;
+	min-width:1em;
+	text-align:center;
+}
+
+.pagination .current {
+    background: #26B;
+    color: #fff;
+	border: solid 1px #AAE;
+}
+
+.pagination .current.prev, .pagination .current.next{
+	color:#999;
+	border-color:#999;
+	background:#fff;
+}

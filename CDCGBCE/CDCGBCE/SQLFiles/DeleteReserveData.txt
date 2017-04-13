@@ -1,0 +1,9 @@
+Delete From actMainReve
+Where acmYear=@acmYear And IsNull(acmReserveFlag,'0')='1' And acmNo=@acmNo And acmWordNum=@acmWordNum
+
+;
+
+Delete From  actVisaReve Where acmYear=@acmYear  And acmNo=@acmNo  
+;
+
+

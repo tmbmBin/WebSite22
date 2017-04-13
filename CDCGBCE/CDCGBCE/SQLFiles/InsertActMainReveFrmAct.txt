@@ -1,0 +1,45 @@
+Insert Into actMainReve
+(
+ acmYear, acmNo, acmKidNum, acmMonth, acmDay, acmBgtKind, acmBgtYear, acmBgtMonth, acmBgtAcmNo, acmBgtUnitNo, acmBgtUnitSubNo, acmWord, 
+                      acmWordNum, acmWordNumSubNo, acmSourWordNum, acmTopWordNum, acmMarkDate, acmTeaCode, acmMarkUnitNo, acmMarkUnitSubNo, acmMarkUserNo, 
+                      acmWorkUnitNo, acmWorkUnitSubNo, acmWorkUserNo, acmWorkRankNo, acmWorkLevelNo, acmWorkLevelName, acmWorkRankKind, acmWorkLevelKind, 
+                      acmWorkMapNo, acmMoney, acmMemo, acmSubMemo, acmBillCnt, acmRepayKind, acmDtlMoney, acmProdLevelKind, acmProdVisaKind, acmProdKind, 
+                      acmPayName, acmPayReMoney, acmPayReMemo, acmCreateDTime, acmCreateUser, acmModifyDTime, acmModifyUser, acmPassFlag, acmPassDate, 
+                      acmPassDTime, acmPassUser, acmFinalKind, acmFinalDate, acmSubsidyCode, acmPassMoney, acmPassMemo, acmEmpNo, acmAutoBidFlag, acmDate, 
+                      acmUnitPassFlag, acmUnitPassDate, acmUnitPassDTime, acmUnitPassUser, acmUnitPassMoney, acmUnitPassMemo, acmBgtKindSet, inspect, FK_VisaNo, 
+                      acmEtcPayment, acmAutoPrePayFlag, acmReadyFlag, acmProdDepCode, acmVisaKindCode, acmProdMethodCode, acmUserModifyDTime, acmBaseItemsKindCode, 
+                      acmPayHour, acmReturnDate, acmPrePayDate, acmRequireDepCode, acmRequireUserName, acmCateGrpFlag, acmRequireDate, acmSelfProdFlag, acmReserveFlag, 
+                      acmReserveWordNum
+)
+
+SELECT     acmYear, acmNo, acmKidNum, acmMonth, acmDay, acmBgtKind, acmBgtYear, acmBgtMonth, acmBgtAcmNo, acmBgtUnitNo, acmBgtUnitSubNo, acmWord, 
+                      acmWordNum, acmWordNumSubNo, acmSourWordNum, acmTopWordNum, acmMarkDate, acmTeaCode, acmMarkUnitNo, acmMarkUnitSubNo, acmMarkUserNo, 
+                      acmWorkUnitNo, acmWorkUnitSubNo, acmWorkUserNo, acmWorkRankNo, acmWorkLevelNo, acmWorkLevelName, acmWorkRankKind, acmWorkLevelKind, 
+                      acmWorkMapNo, acmMoney, acmMemo, acmSubMemo, acmBillCnt, acmRepayKind, acmDtlMoney, acmProdLevelKind, acmProdVisaKind, acmProdKind, 
+                      acmPayName, acmPayReMoney, acmPayReMemo, acmCreateDTime, acmCreateUser, acmModifyDTime, acmModifyUser, acmPassFlag, acmPassDate, 
+                      acmPassDTime, acmPassUser, acmFinalKind, acmFinalDate, acmSubsidyCode, acmPassMoney, acmPassMemo, acmEmpNo, acmAutoBidFlag, acmDate, 
+                      acmUnitPassFlag, acmUnitPassDate, acmUnitPassDTime, acmUnitPassUser, acmUnitPassMoney, acmUnitPassMemo, acmBgtKindSet, inspect, FK_VisaNo, 
+                      acmEtcPayment, acmAutoPrePayFlag, acmReadyFlag, acmProdDepCode, acmVisaKindCode, acmProdMethodCode, acmUserModifyDTime, acmBaseItemsKindCode, 
+                      acmPayHour, acmReturnDate, acmPrePayDate, acmRequireDepCode, acmRequireUserName, acmCateGrpFlag, acmRequireDate, acmSelfProdFlag, acmReserveFlag, 
+                      acmReserveWordNum
+FROM         actMain
+Where acmYear={@actMain} And IsNull(acmReserveFlag,'0')='1' And acmNo={@acmNo} And acmWordNum={@acmWordNum}
+
+;
+
+Insert Into actVisaReve
+(
+ acmYear, acmNo, acvNo, acvBgtYear, acvBgtMonth, acvPlanCode, acvOutlayYear, acvOutlayCode, acvBgtSourceCode, acvAccKind, acvBizCode, acvPrePayFlag, 
+                      acvMoney, acvMemo, acmNoPrv, inspect, acvPassAdjustMoney, acvNextYearFlag, acvPassMoney, acvBgtKind, acvBgtKindSet, acvBgtDepCode, acvPlanCateCode, 
+                      acvCostKind
+)
+
+
+SELECT     acmYear, acmNo, acvNo, acvBgtYear, acvBgtMonth, acvPlanCode, acvOutlayYear, acvOutlayCode, acvBgtSourceCode, acvAccKind, acvBizCode, acvPrePayFlag, 
+                      acvMoney, acvMemo, acmNoPrv, inspect, acvPassAdjustMoney, acvNextYearFlag, acvPassMoney, acvBgtKind, acvBgtKindSet, acvBgtDepCode, acvPlanCateCode, 
+                      acvCostKind
+FROM         actVisa 
+Where acmYear={@acmYear}  And acmNo={@acmNo}  
+
+
+

@@ -1,0 +1,76 @@
+Select A.*, IsNull(R.acvMoney,0) As ReserveMoney,  IsNull(R.acvMoney,0) - IsNull(A.acvmoney,0) As MoneyLeft 
+
+
+ 
+From 
+(
+	Select 
+	  V.AcmYear
+	, V.acvBgtDepCode
+	, V.acvAccKind
+	, V.acvBgtSourceCode
+	, V.acvOutlayYear
+	, V.acvBizCode
+	, V.acvPlanCode
+	, V.acvOutlayCode
+	, Sum(acvMoney) As acvMoney
+	, M.acmReserveWordNum
+, IsNull(V.acmNoPrv, V.acmNo) As acmNo
+	From actMain M Join actVisa V On M.acmYear=V.acmYear and M.acmNo=IsNull(V.acmNoPrv, V.acmNo)
+	Where M.acmYear=99 And IsNull(M.acmReserveFlag, '0')='0'
+	And M.acmReserveWordNum='09907984'
+	Group By
+	  V.AcmYear
+	, IsNull(V.acmNoPrv, V.acmNo)
+	, M.acmReserveWordNum
+	, V.acvBgtDepCode
+	, V.acvAccKind
+	, V.acvBgtSourceCode
+	, V.acvOutlayYear
+	, V.acvBizCode
+	, V.acvPlanCode
+	, V.acvOutlayCode
+)   A
+
+
+Left  Join 
+
+(
+Select 
+ V.AcmYear
+, V.acvBgtDepCode
+, V.acvAccKind
+, V.acvBgtSourceCode
+, V.acvOutlayYear
+, V.acvBizCode
+, V.acvPlanCode
+, V.acvOutlayCode
+, Sum(acvMoney) As acvMoney
+, IsNull(IsNull(M.acmTopWordNum, M.acmSourWordNum), M.acmWordNum) As acmWordNum
+, IsNull(V.acmNoPrv, V.acmNo) As acmNo
+From actMainReve M Join actVisaReve V On M.acmYear=V.acmYear and M.acmNo=IsNull(V.acmNoPrv, V.acmNo)
+Where M.acmYear=99 And IsNull(M.acmReserveFlag, '0')='1'
+And IsNull(IsNull(M.acmTopWordNum, M.acmSourWordNum), M.acmWordNum)='09907984'
+Group By
+ V.AcmYear
+, IsNull(V.acmNoPrv, V.acmNo)
+, IsNull(IsNull(M.acmTopWordNum, M.acmSourWordNum), M.acmWordNum)
+, V.acvBgtDepCode
+, V.acvAccKind
+, V.acvBgtSourceCode
+, V.acvOutlayYear
+, V.acvBizCode
+, V.acvPlanCode
+, V.acvOutlayCode
+)  R
+
+On  A.AcmYear			= R.acmYear 
+And A.acmReserveWordNum	= R.acmWordNum
+And A.acvBgtDepCode		= R.acvBgtDepCode
+And A.acvAccKind		= R.acvAccKind
+And A.acvBgtSourceCode	= R.acvBgtSourceCode
+And A.acvOutlayYear		= R.acvOutlayYear
+And A.acvBizCode		= R.acvBizCode
+And A.acvPlanCode		= R.acvPlanCode
+And A.acvOutlayCode		= R.acvOutlayCode
+;

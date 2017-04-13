@@ -1,0 +1,13 @@
+Insert Into actVisaReve
+(
+ acmYear, acmNo, acvNo, acvBgtYear, acvBgtMonth, acvPlanCode, acvOutlayYear, acvOutlayCode, acvBgtSourceCode, acvAccKind, acvBizCode, acvPrePayFlag, 
+                      acvMoney, acvMemo, acmNoPrv, inspect, acvPassAdjustMoney, acvNextYearFlag, acvPassMoney, acvBgtKind, acvBgtKindSet, acvBgtDepCode, acvPlanCateCode, 
+                      acvCostKind
+)
+
+
+SELECT     acmYear, acmNo, acvNo, acvBgtYear, acvBgtMonth, acvPlanCode, acvOutlayYear, acvOutlayCode, acvBgtSourceCode, acvAccKind, acvBizCode, acvPrePayFlag, 
+                      acvMoney, acvMemo, acmNoPrv, inspect, acvPassAdjustMoney, acvNextYearFlag, acvPassMoney, acvBgtKind, acvBgtKindSet, acvBgtDepCode, acvPlanCateCode, 
+                      acvCostKind
+FROM         actVisa 
+Where acmYear={@acmYear}  And acmNo={@acmNo}  

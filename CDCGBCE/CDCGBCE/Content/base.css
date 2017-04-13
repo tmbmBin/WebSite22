@@ -1,0 +1,141 @@
+﻿body {
+    margin: 35px 20px;
+}
+
+/* 統一化字型 */
+html, button, input, select, textarea {
+    font-family: "Times New Roman";
+}
+
+.require {
+    border: 1px solid Gray;
+    padding: 2px;
+    background-color: #FFFFE0 !important;
+}
+
+.error {
+    color: Red;
+}
+
+.selected {
+    border-color: #dcc51b;
+}
+
+.inputFocus {
+    border: 2px solid black;
+}
+
+
+.tooltip {
+    display: none;
+    background-color: #ffa;
+    border: 1px solid #cc9;
+    padding: 3px;
+    font-size: 13px;
+    -moz-box-shadow: 2px 2px 11px #666;
+    -webkit-box-shadow: 2px 2px 11px #666;
+}
+
+
+.LabelStyle {
+    border: 0px;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+
+.LinkButtonStyle {
+    border: 0px;
+    cursor: pointer;
+    color: #0066CC;
+    text-decoration: underline;
+    text-align: center;
+}
+
+
+.NotVisible {
+    display: none;
+}
+
+
+
+
+/*#region 強制排版 */
+.AlignLeftTop {
+    text-align: left !important;
+    text-align: left;
+    vertical-align: top !important;
+    vertical-align: top;
+}
+
+.AlignLeftMiddle {
+    text-align: left !important;
+    text-align: left;
+    vertical-align: middle !important;
+    vertical-align: middle;
+}
+
+.AlignLeftBottom {
+    text-align: left !important;
+    text-align: left;
+    vertical-align: bottom !important;
+    vertical-align: bottom;
+}
+
+
+.AlignCenterTop {
+    text-align: center !important;
+    text-align: center;
+    vertical-align: top !important;
+    vertical-align: top;
+}
+
+.AlignCenterMiddle {
+    text-align: center !important;
+    text-align: center;
+    vertical-align: middle !important;
+    vertical-align: middle;
+}
+
+.AlignCenterBottom {
+    text-align: center !important;
+    text-align: center;
+    vertical-align: bottom !important;
+    vertical-align: bottom;
+}
+
+
+.AlignRightTop {
+    text-align: right !important;
+    text-align: right;
+    vertical-align: top !important;
+    vertical-align: top;
+}
+
+.AlignRightMiddle {
+    text-align: right !important;
+    text-align: right;
+    vertical-align: middle !important;
+    vertical-align: middle;
+}
+
+.AlignRightBottom {
+    text-align: right !important;
+    text-align: right;
+    vertical-align: bottom !important;
+    vertical-align: bottom;
+}
+/*#endregion*/
+
+
+.Width95p {
+    width: 95% !important;
+}
+
+.Width90p {
+    width: 90% !important;
+}
+
+.Width70p {
+    width: 70% !important;
+}

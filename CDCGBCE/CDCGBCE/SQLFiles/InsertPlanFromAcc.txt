@@ -1,0 +1,54 @@
+SELECT codCodeVer,plnPlanCode,MAX(plnPlanName) AS plnPlanName
+,MAX(plnLevel) as plnLevel,MAX(plnLevelEnd) as plnLevelEnd
+,MAX(plnCreateDate) as plnCreateDate,MAX(plnStopFlag) as plnStopFlag
+,MAX(plnCodeFinal) as plnCodeFinal,MAX(plnAliasNo) AS plnAliasNo
+,MAX(plnAliasNo1) as plnAliasNo1
+FROM (
+SELECT DISTINCT 
+           (CASE WHEN Substring(S.PK_AllSubject,3,3) IN ('416','421') THEN substring(S.PK_AllSubject,3+6,2) ELSE {@parCodCodeVer} END) as codCodeVer
+          ,(CASE WHEN CHARINDEX('.4-',S.PK_AllSubject)>0 THEN 
+                  (CASE WHEN Substring(S.PK_AllSubject,3,3) IN ('416','421') THEN  
+                        '321'+substring(S.PK_AllSubject,3+8,CHARINDEX('.4-',S.PK_AllSubject)-3-8)   
+                   ELSE substring(S.PK_AllSubject,3,CHARINDEX('.4-',S.PK_AllSubject)-3)  
+                  END) 
+             ELSE 
+                 (CASE WHEN Substring(S.PK_AllSubject,3,3) IN ('416','421') THEN  
+                        '321'+substring(S.PK_AllSubject,3+8,60)   
+                   ELSE substring(S.PK_AllSubject,3,60)
+                  END)
+              END) as plnPlanCode
+           ,F_SubjectName as plnPlanName
+           ,ISNULL((select count(*) from {@parTableYear}_SubjectTree Z where S.PK_AllSubject LIKE Z.PK_AllSubject+'%' AND NOT (Substring(PK_AllSubject,3,3) IN ('416','421') AND LEN(PK_AllSubject)=10) ),1)-1 as plnLevel
+            ,(CASE WHEN ISNULL((Select count(*) from {@parTableYear}_SubjectTree Z where Z.PK_AllSubject LIKE S.PK_AllSubject+'%'
+                                AND (Substring(PK_AllSubject,3,3) IN ('321','413','415') 
+                                 OR Substring(PK_AllSubject,3,3) IN ('416','421') AND LEN(PK_AllSubject)>10 )
+                                AND CHARINDEX('.4-',PK_AllSubject)=0
+                        ),1)>1 
+                   THEN ISNULL((select count(*) from {@parTableYear}_SubjectTree Z where S.PK_AllSubject LIKE Z.PK_AllSubject+'%' AND NOT (Substring(PK_AllSubject,3,3) IN ('416','421') AND LEN(PK_AllSubject)=10) ),1)-1 ELSE 99 END)  as plnLevelEnd           
+            ,LTRIM(98+1911)+'/01/01'  as plnCreateDate,'0' as plnStopFlag
+            ,(CASE WHEN ISNULL((select count(*) from {@parTableYear}_SubjectTree Z where  Z.PK_AllSubject LIKE S.PK_AllSubject+'%'),1)<=1 
+                          THEN '1'  END)  as plnCodeFinal
+            ,'0-'+(CASE WHEN CHARINDEX('.4-',S.PK_AllSubject)>0 THEN 
+                  (CASE WHEN Substring(S.PK_AllSubject,3,3) IN ('416','421') THEN  
+                        '321'+substring(S.PK_AllSubject,3+8,CHARINDEX('.4-',S.PK_AllSubject)-3-8)   
+                   ELSE substring(S.PK_AllSubject,3,CHARINDEX('.4-',S.PK_AllSubject)-3)  
+                  END) 
+             ELSE 
+                 (CASE WHEN Substring(S.PK_AllSubject,3,3) IN ('416','421') THEN  
+                        '321'+substring(S.PK_AllSubject,3+8,60)   
+                   ELSE substring(S.PK_AllSubject,3,60)
+                  END)
+              END) as plnAliasNo   
+            ,(CASE WHEN   PK_AllSubject LIKE '0-321%'  AND LEN(PK_AllSubject)>12  THEN substring(PK_AllSubject,11,4) END) as plnAliasNo1
+
+FROM {@parTableYear}_SubjectTree S join {@parTableYear}_subject D ON S.fk_subidno=D.PK_idno
+WHERE (Substring(PK_AllSubject,3,3) IN ('321','413','415') 
+       OR Substring(PK_AllSubject,3,3) IN ('416','421') AND LEN(PK_AllSubject)>10 )
+      AND CHARINDEX('.4-',PK_AllSubject)=0
+ 
+) D 
+
+GROUP BY codCodeVer,plnPlanCode
+Having 1=1 {@parWhereTxt}
+ORDER BY codCodeVer,plnPlanCode
+;

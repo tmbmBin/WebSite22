@@ -1,0 +1,252 @@
+﻿<asp:DataGrid id="dg_accName" runat="server" CellPadding="0" BorderStyle="Solid" BorderColor="#D4D0C8" style="TABLE-LAYOUT: fixed; background-color: #FFFFFF" ShowFooter="True" AutoGenerateColumns="False" OnItemDataBound="dg_accName_ItemDataBound" OnItemCreated="dg_accName_ItemCreated">
+	<HeaderStyle font-size="10pt" wrap="False" height="21px" cssclass="titleDynamic"></HeaderStyle>
+	<AlternatingItemStyle height="22px"></AlternatingItemStyle>
+	<ItemStyle height="22px"></ItemStyle>
+	<Columns>
+		<asp:TemplateColumn HeaderText="移除">
+			<HeaderStyle wrap="False" horizontalalign="Center" forecolor="DarkOrange" width="35px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="CheckBox1" runat="server" ToolTip="移除勾選的資料列" Enabled="True"></asp:CheckBox>
+			</ItemTemplate>
+			<FooterStyle horizontalalign="Center"></FooterStyle>
+			<FooterTemplate>
+				<asp:LinkButton id="lbtn_add_accName" runat="server" ForeColor="DarkOrange" onclick="lbtn_add_accName_Click">新增受款人</asp:LinkButton>
+			</FooterTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="會計年度" Visible="True">
+			<HeaderStyle wrap="True"></HeaderStyle>
+			<ItemTemplate>
+				<asp:TextBox id="text_PK_Year" runat="server" style="TEXT-ALIGN: center; margin-top: -1" Width="0px" Text='<%# DataBinder.Eval(Container, "DataItem.PK_Year") %>' class="removeBorder" ReadOnly="True"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="傳票主表系統編號" Visible="True">
+			<ItemTemplate>
+				<asp:TextBox id="text_FK_MainNo" runat="server" style="TEXT-ALIGN: center; margin-top: -1" Width="0px" Text='<%# DataBinder.Eval(Container, "DataItem.FK_MainNo") %>' class="removeBorder" ReadOnly="True"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>交易明細編號</span>" Visible="True">
+			<ItemTemplate>
+				<asp:TextBox id="text_FK_DetailNo" runat="server" style="TEXT-ALIGN: center; margin-top: -1" Width="50px" Text='<%# DataBinder.Eval(Container, "DataItem.FK_DetailNo") %>' ToolTip='<%# DataBinder.Eval(Container, "DataItem.FK_DetailNo") %>' class="removeBorder" ReadOnly="False" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'; //upto_accExchV2(this.id, 'text_FK_DetailNo', 'text_F_Money')"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>受款人系統編號</span>">
+			<ItemTemplate>
+				<asp:TextBox id="text_PK_NameNo" runat="server" style="TEXT-ALIGN: center; margin-top: -1" Width="50px" Text='<%# DataBinder.Eval(Container, "DataItem.PK_NameNo") %>' class="removeBorder" ReadOnly="True"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="傳票別" Visible="True">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_VouKind" runat="server" style="TEXT-ALIGN: center; margin-top: -1" Width="0px" Text='<%# DataBinder.Eval(Container, "DataItem.F_VouKind") %>' class="removeBorder" ReadOnly="True"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>受款人代碼</span>">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_NameNo" runat="server" style="TEXT-ALIGN: center; margin-top: -1" Width="50px" Text='<%# DataBinder.Eval(Container, "DataItem.F_NameNo") %>' class="removeBorder" ReadOnly="True"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="受款人">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_Name" runat="server" style="TEXT-ALIGN: left; margin-top: -1; width: expression(parentNode.offsetWidth)" Width="100px" Text='<%# DataBinder.Eval(Container, "DataItem.F_Name") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" onContextmenu='JavaScript: if(this.value=="?"){requestInfo_accName(this.id,"text_F_Name");}; return false;'></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="金額">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_Money" runat="server" style="TEXT-ALIGN: right; margin-top: -1; width: expression(parentNode.offsetWidth)" Width="70px" Text='<%# DataBinder.Eval(Container, "DataItem.F_Money", "{0:#,#}") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onkeypress="return check_Num()" onblur="this.className='removeBorder'; //upto_accExch(this.id, 'text_F_Money')"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="支出用途">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_OutRem" runat="server" style="TEXT-ALIGN: left; margin-top: -1; width: expression(parentNode.offsetWidth)" Text='<%# DataBinder.Eval(Container, "DataItem.F_OutRem") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" Width="100px"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="郵遞區號">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_ZipCode" runat="server" style="TEXT-ALIGN: center; margin-top: -1" Width="60px" Text='<%# DataBinder.Eval(Container, "DataItem.F_ZipCode") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="地址">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_Address" runat="server" style="TEXT-ALIGN: left; margin-top: -1; width: expression(parentNode.offsetWidth)" Width="250px" Text='<%# DataBinder.Eval(Container, "DataItem.F_Address") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="電話">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_Telephone" runat="server" style="TEXT-ALIGN: left; margin-top: -1" Text='<%# DataBinder.Eval(Container, "DataItem.F_Telephone") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" Width="100px"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="指定兌付代庫名稱">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_TranBank" runat="server" style="TEXT-ALIGN: left; margin-top: -1" Text='<%# DataBinder.Eval(Container, "DataItem.F_TranBank") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" Width="120px"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="專戶存款帳號">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_AgenBankNo" runat="server" style="TEXT-ALIGN: left; margin-top: -1" Text='<%# DataBinder.Eval(Container, "DataItem.F_AgenBankNo") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" Width="100px"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="金融機構代號">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_BankNo" runat="server" style="TEXT-ALIGN: left; margin-top: -1" Text='<%# DataBinder.Eval(Container, "DataItem.F_BankNo") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" Width="100px"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="金融機構名稱">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_Bank" runat="server" style="TEXT-ALIGN: left; margin-top: -1" Text='<%# DataBinder.Eval(Container, "DataItem.F_Bank") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" Width="120px" onContextmenu='JavaScript: if(this.value=="?"){requestInfo_codBankSubName(this.id,"text_F_Bank");}; return false;'></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="戶名">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_Depositor" runat="server" style="TEXT-ALIGN: left; margin-top: -1" Text='<%# DataBinder.Eval(Container, "DataItem.F_Depositor") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" Width="100px"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="帳號">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_DepositorNo" runat="server" style="TEXT-ALIGN: left; margin-top: -1" Width="120px" Text='<%# DataBinder.Eval(Container, "DataItem.F_DepositorNo") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" MaxLength="20"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="備註">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_OutMemo" runat="server" style="TEXT-ALIGN: left; margin-top: -1; width: expression(parentNode.offsetWidth)" Width="150px" Text='<%# DataBinder.Eval(Container, "DataItem.F_OutMemo") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" onContextmenu='fnCallPhraseDialog(this.id);return false;'></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="單據類別">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_ReceiptType" runat="server" style="TEXT-ALIGN: left; margin-top: -1" Text='<%# DataBinder.Eval(Container, "DataItem.F_ReceiptType") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" Width="100px"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>發票或收據開立日期</span>">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_InvoiceDate" runat="server" style="TEXT-ALIGN: center; margin-top: -1" Width="80px" Text='<%# ChtDateSplit(DataBinder.Eval(Container, "DataItem.F_InvoiceDate") & "",, "　/　/　") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" onContextmenu="JavaScript: oDiv.style.left=realPosition(this).x-document.getElementById('freezingDiv2').scrollLeft; oDiv.style.top=realPosition(this).y; txt_oDiv.style.width=this.style.width; setControlAssigned(this); Calendar1.Show(); return false;"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="發票或收據號碼">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_InvoiceNo" runat="server" style="TEXT-ALIGN: left; margin-top: -1" Text='<%# DataBinder.Eval(Container, "DataItem.F_InvoiceNo") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" Width="100px"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>發票或收據金額</span>">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_InvoiceCash" runat="server" style="TEXT-ALIGN: right; margin-top: -1; width: expression(parentNode.offsetWidth)" Width="70px" Text='<%# DataBinder.Eval(Container, "DataItem.F_InvoiceCash", "{0:#,#}") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>統一編號∕身分證號</span>">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_BusinessNo" runat="server" style="TEXT-ALIGN: left; margin-top: -1; width: expression(parentNode.offsetWidth)" Text='<%# DataBinder.Eval(Container, "DataItem.F_BusinessNo") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" Width="100px"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="領取支票憑證號">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_GetCheckNo" runat="server" style="TEXT-ALIGN: left; margin-top: -1" Text='<%# DataBinder.Eval(Container, "DataItem.F_GetCheckNo") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" Width="100px"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="支票日期">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_ChequeDate" runat="server" style="TEXT-ALIGN: center; margin-top: -1" Width="80px" Text='<%# ChtDateSplit(DataBinder.Eval(Container, "DataItem.F_ChequeDate") & "",, "　/　/　") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" onContextmenu="JavaScript: oDiv.style.left=realPosition(this).x-document.getElementById('freezingDiv2').scrollLeft; oDiv.style.top=realPosition(this).y; txt_oDiv.style.width=this.style.width; setControlAssigned(this); Calendar1.Show(); return false;"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="支票號碼">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_ChequeNo" runat="server" style="TEXT-ALIGN: left; margin-top: -1" Text='<%# DataBinder.Eval(Container, "DataItem.F_ChequeNo") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onblur="this.className='removeBorder'" Width="100px"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>支票請劃線</span>">
+			<HeaderStyle wrap="False" width="0px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="chk_F_LineCheck" runat="server" Checked='<%# Str2Bool(DataBinder.Eval(Container, "DataItem.F_LineCheck")) %>'></asp:CheckBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>支票禁止背書</span>">
+			<HeaderStyle wrap="False" width="0px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="chk_F_UnName" runat="server" Checked='<%# Str2Bool(DataBinder.Eval(Container, "DataItem.F_UnName")) %>'></asp:CheckBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="存帳">
+			<HeaderStyle wrap="False" width="0px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="chk_F_GetCheck1" runat="server" Checked='<%# Str2Bool(DataBinder.Eval(Container, "DataItem.F_GetCheck1")) %>'></asp:CheckBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="自領">
+			<HeaderStyle wrap="False" width="0px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="chk_F_GetCheck2" runat="server" Checked='<%# Str2Bool(DataBinder.Eval(Container, "DataItem.F_GetCheck2")) %>'></asp:CheckBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="郵寄">
+			<HeaderStyle wrap="False" width="0px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="chk_F_GetCheck3" runat="server" Checked='<%# Str2Bool(DataBinder.Eval(Container, "DataItem.F_GetCheck3")) %>'></asp:CheckBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>領回轉發郵寄</span>">
+			<HeaderStyle wrap="False" width="0px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="chk_F_GetCheck4" runat="server" Checked='<%# Str2Bool(DataBinder.Eval(Container, "DataItem.F_GetCheck4")) %>'></asp:CheckBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>領回轉發自領</span>">
+			<HeaderStyle wrap="False" width="0px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="chk_F_GetCheck5" runat="server" Checked='<%# Str2Bool(DataBinder.Eval(Container, "DataItem.F_GetCheck5")) %>'></asp:CheckBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="通匯">
+			<HeaderStyle wrap="False" width="0px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="chk_F_GetCheck6" runat="server" Checked='<%# Str2Bool(DataBinder.Eval(Container, "DataItem.F_GetCheck6")) %>'></asp:CheckBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>寄所屬機關轉發</span>">
+			<HeaderStyle wrap="False" width="0px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="chk_F_GetCheck7" runat="server" Checked='<%# Str2Bool(DataBinder.Eval(Container, "DataItem.F_GetCheck7")) %>'></asp:CheckBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>地方政府旗標</span>">
+			<HeaderStyle wrap="False" width="0px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="chk_F_LocalName" runat="server" Checked='<%# Str2Bool(DataBinder.Eval(Container, "DataItem.F_LocalName")) %>'></asp:CheckBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>沖收之受款人旗標</span>">
+			<HeaderStyle wrap="False" width="0px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="chk_F_InNameFlag" runat="server" Checked='<%# Str2Bool(DataBinder.Eval(Container, "DataItem.F_InNameFlag")) %>'></asp:CheckBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="<span onmouseover='this.title=this.innerText'>其他機關補助額</span>">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_OtherMoney" runat="server" style="TEXT-ALIGN: right; margin-top: -1; width: expression(parentNode.offsetWidth)" Width="70px" Text='<%# DataBinder.Eval(Container, "DataItem.F_OtherMoney", "{0:#,#}") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onkeypress="return check_Num()" onblur="this.className='removeBorder'"></asp:TextBox>
+			</ItemTemplate>
+			<FooterTemplate>
+				<p align="center" style="margin-top: 3; margin-left: 5; margin-right: 5"><asp:LinkButton id="lbtn_save_accName" runat="server" ForeColor="DarkOrange" onclick="lbtn_save_accName_Click">儲存∕關閉</asp:LinkButton></p>
+			</FooterTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn HeaderText="自付額">
+			<ItemTemplate>
+				<asp:TextBox id="text_F_OwnMoney" runat="server" style="TEXT-ALIGN: right; margin-top: -1" Width="70px" Text='<%# DataBinder.Eval(Container, "DataItem.F_OwnMoney", "{0:#,#}") %>' class="removeBorder" onfocus="this.className='applyBorder';this.select();" onkeypress="return check_Num()" onblur="this.className='removeBorder'"></asp:TextBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+		<asp:TemplateColumn>
+			<HeaderStyle wrap="False" width="35px"></HeaderStyle>
+			<ItemStyle wrap="False" horizontalalign="Center"></ItemStyle>
+			<ItemTemplate>
+				<asp:CheckBox id="chk_ShowMe" runat="server" Enabled="False" Checked='<%# Str2Bool(DataBinder.Eval(Container, "DataItem.ShowMe")) %>'></asp:CheckBox>
+			</ItemTemplate>
+		</asp:TemplateColumn>
+	</Columns>
+	<FooterStyle font-size="10pt"></FooterStyle>
+</asp:DataGrid>

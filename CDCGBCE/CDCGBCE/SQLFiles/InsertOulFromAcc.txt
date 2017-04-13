@@ -1,0 +1,27 @@
+ SELECT codCodeVer,oulOutlayCode,MAX(oulOutlayName) AS oulOutlayName,MAX(oulLevel) AS oulLevel
+,MAX(oulCreateDate) as oulCreateDate,MAX(oulStopFlag) AS oulStopFlag,MAX(oulAliasNo) AS oulAliasNo
+
+FROM (
+SELECT DISTINCT 
+             (CASE WHEN Substring(S.PK_AllSubject,3,3) IN ('416','421') THEN substring(S.PK_AllSubject,3+6,2) ELSE {@parCodCodeVer} END) as codCodeVer
+             ,(CASE WHEN CHARINDEX('.4-',PK_AllSubject)>0 THEN substring(PK_AllSubject,CHARINDEX('.4-',PK_AllSubject)+3,60)  ELSE '' END ) as oulOutlayCode
+             ,F_SubjectName as oulOutlayName
+             ,ISNULL((Select count(*) from {@parTableYear}_SubjectTree Z where S.PK_AllSubject LIKE Z.PK_AllSubject+'%'
+                      AND (Substring(PK_AllSubject,3,3) IN ('321','413','415') 
+                           OR Substring(PK_AllSubject,3,3) IN ('416','421') AND LEN(PK_AllSubject)>10 )
+                      AND CHARINDEX('.4-',PK_AllSubject)>0
+              ),1) as oulLevel
+            ,LTRIM({@parCodCodeVer}+1911)+'/01/01'  as oulCreateDate,'0' as oulStopFlag
+            ,substring(S.PK_AllSubject,15,60) as oulAliasNo
+
+
+FROM {@parTableYear}_SubjectTree S join {@parTableYear}_subject D ON S.fk_subidno=D.PK_idno
+WHERE (Substring(PK_AllSubject,3,3) IN ('321','413','415') 
+       OR Substring(PK_AllSubject,3,3) IN ('416','421') AND LEN(PK_AllSubject)>10 )
+      AND CHARINDEX('.4-',PK_AllSubject)>0
+) D
+
+GROUP BY codCodeVer,oulOutlayCode
+Having 1=1 {@parWhereTxt}
+ORDER BY codCodeVer,oulOutlayCode
+;

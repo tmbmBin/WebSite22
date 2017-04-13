@@ -1,0 +1,384 @@
+--#2015/11/11 下午 03:58:53#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/11 下午 04:06:21#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:05:05#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:05:05#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM GetCGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:06:09#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:06:09#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:08:32#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:08:32#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:14:10#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:14:10#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:15:26#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:15:27#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:17:18#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:17:18#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:18:39#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:18:39#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:18:54#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:18:54#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:21:38#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:21:38#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:44:24#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:44:24#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:56:44#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:56:44#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:58:14#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 上午 11:58:14#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:00:08#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:00:08#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:31:00#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:31:00#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:32:43#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:32:43#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:33:17#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:33:17#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:34:21#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:34:21#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:38:36#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:38:36#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:38:56#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:38:56#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:40:51#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:40:51#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:45:04#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:45:04#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:46:34#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:46:34#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:48:35#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 12:48:35#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 02:19:54#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 02:19:54#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 02:32:15#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 02:32:15#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 02:38:33#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 02:38:33#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 02:48:49#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 02:48:50#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct where  UpLoadSuccessful='1' and   isnull(Status,'') = '' 
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:03:27#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:03:27#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:04:09#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:04:09#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct where  UpLoadSuccessful='1' and   isnull(Status,'') = '' 
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:04:34#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:04:34#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct where  UpLoadSuccessful='1' and   isnull(Status,'') = '' 
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:06:52#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:06:52#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct where  UpLoadSuccessful='1' and   isnull(Status,'') = '' 
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:07:35#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:07:35#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:22:45#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:22:46#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:22:56#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:22:56#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct where  UpLoadSuccessful='1' and   isnull(Status,'') = '' 
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:27:09#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:27:09#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:27:23#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:27:23#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct where  UpLoadSuccessful='1' and   isnull(Status,'') = '' 
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:29:10#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:29:10#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct where  UpLoadSuccessful='1' and   isnull(Status,'') = '' 
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:37:06#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:37:06#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:39:49#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:39:49#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct where  UpLoadSuccessful='1' and   isnull(Status,'') = '' 
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:40:00#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:40:00#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:44:28#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:44:28#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:45:31#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:45:31#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:46:23#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:46:23#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:46:40#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:46:40#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:48:18#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:48:18#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct where  UpLoadSuccessful='1' and   isnull(Status,'') = '' 
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:49:53#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:49:53#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:52:57#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT  * FROM fn_CGSSTranDT(default,default,default,default)
+-------------------------------------------------------------------------------
+--#2015/11/12 下午 03:52:57#  http://localhost:15137/WebForm1.aspx
+--[Parameter Count:0]
+ SELECT * FROM CGSSLogDistinct
+-------------------------------------------------------------------------------

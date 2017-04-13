@@ -1,0 +1,3 @@
+Delet From actMainReve
+Where acmYear={@actMain} And IsNull(acmReserveFlag,'0')='1' And acmWordNum={@acmWordNum}
+
